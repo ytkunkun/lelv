@@ -1,0 +1,266 @@
+
+.login {
+  background: url("../img/bg01.png") no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+
+  > div.layui-container {
+    width: 1426*@px;
+    height: 630*@px;
+    background: url("../img/bg02.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .left {
+      height: 100%;
+      position: absolute;
+      // top: 170*@px;
+      left: 224*@px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+
+      img {
+        width: 523 *@px;
+        height: 315*@px;
+      }
+    }
+
+
+  }
+
+
+}
+
+.login .right {
+  width: 312*@px;
+  position: absolute;
+  right: 258 * @px;
+
+  > header {
+    height: 256 * @px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100 * @px;
+      height: 100 * @px;
+    }
+  }
+
+
+}
+
+.login .right ul li, #ul_forget li {
+
+  width: 100%;
+  margin-top: 20 *@px;
+
+  &.username {
+
+    margin: 0;
+
+  }
+
+  input[type="text"], input[type="email"], input[type="password"] {
+    height: 48*@px;
+    width: 100%;
+    border-bottom: 1px solid #EFEFEF;
+    color: rgba(153, 153, 153, 1);
+    font-size: 16*@px;
+
+    &::-webkit-input-placeholder {
+      color: rgba(153, 153, 153, 1);
+      font-size: 16*@px;
+    }
+  }
+
+  &.mdl {
+    > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      > div {
+        &:first-child {
+          input[type='checkbox'] {
+            display: none;
+          }
+
+          label[for='checkbox']::before {
+            //background-color: #B18AFF;
+            border: 1px solid #b18aff;
+            color: #fff;
+            width: 20*@px;
+            height: 20*@px;
+            text-align: center;
+            content: ' ';
+            border-radius: 50%;
+          }
+
+          label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+          }
+
+          input[type='checkbox']:checked + label[for='checkbox']::before {
+            //position: absolute;
+            //top: -20*@px;
+
+            content: '✓';
+            font-size: 18*@px;
+            color: #b18aff;
+            font-weight: bold;
+          }
+
+          span {
+            color: #999999;
+            font-size: 14*@px;
+            margin-left: 10*@px;
+          }
+
+        }
+
+        &:last-child {
+          span {
+            color: #999999;
+            font-size: 14*@px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  &.codeLi {
+    position: relative;
+
+    button {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      background: #B18AFF;
+      color: #fff;
+      //font-size: 13*@px;
+      cursor: pointer;
+      //padding: 10 * @px 25 * @px;
+      height: 35*@px;
+      width: 95*@px;
+      border-radius: 24*@px;
+    }
+  }
+
+  &.loginLi {
+    button {
+      width: 100%;
+      height: 48* @px;
+      color: #fff;
+      border-radius: 24px;
+      font-size: 24*@px;
+      background: #B18AFF;
+      cursor: pointer;
+      margin: 20 * @px 0;
+    }
+  }
+
+  &:last-child {
+    margin: 0;
+    text-align: right;
+
+    span {
+      color: #999999;
+      font-size: 14*@px;
+      cursor: pointer;
+    }
+  }
+
+}
+
+.login .right ul#ul_forget {
+  display: none;
+
+  li.title {
+    font-size: 24*@px;
+    text-align: center;
+    position: relative;
+    top: -30*@px;
+
+    .layui-icon-close {
+      font-size: 30*@px;
+      color: #ccc;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  }
+
+}
+
+.login .right ul#ul_reset {
+  display: none;
+
+  li.title {
+    font-size: 24*@px;
+    text-align: center;
+    position: relative;
+    top: -30*@px;
+  }
+}
+
+.login .right ul#ul_register {
+  display: none;
+
+  li.title {
+    font-size: 24*@px;
+    text-align: center;
+    position: relative;
+    top: -30*@px;
+
+    .layui-icon-close {
+      font-size: 30*@px;
+      color: #ccc;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+  }
+}
+
+.layui-layer-btn {
+  text-align: center !important;
+}
+
+.layui-layer {
+  min-width:350*@px !important;
+  min-height:100*@px !important;
+  //box-shadow:0px 12px 12px rgba(0,0,0,49);
+  opacity: 1;
+  //padding: 20px 30px !important;
+  //background: #fff !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+  //overflow: hidd en !important;
+
+}
+
+.layui-layer-content {
+
+  text-align: center;
+}
+.layui-layer-loading2{
+  margin: auto !important;
+}

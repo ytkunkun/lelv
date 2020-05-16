@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../plugin/layui/css/layui.css">
+    <!--    <link rel="stylesheet" type="text/less" href="../../less/style.less">-->
+    <link rel="stylesheet" type="text/less" href="../../less/style.css">
+    <script src="../../plugin/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../../plugin/less-3.10.0.min.js"></script>
+    <script src="../../plugin/layui/layui.js"></script>
+    <script src="../../js/config.js"></script>
+    <title>Title</title>
+</head>
+
+<body ondragstart="return false">
+
+<div id="home">
+    <div class=" banner">
+        <p id="hello">早上好！</p>
+        <p>欢迎来到乐旅管理系统 <span id="lastLoginTime"></span></p>
+    </div>
+    <div class="cont">
+        <div class="left com">
+            <div class="title">
+                <span>运营状况</span>
+                <img src="../../img/icon05.png" alt="">
+            </div>
+            <div class="bottom">
+                <div>
+                    <span>35%</span>
+                    <p>本周</p>
+                </div>
+                <div>
+                    <span>42%</span>
+                    <p>本月</p>
+                </div>
+            </div>
+        </div>
+        <div class="right com">
+            <div class="title">
+                <span>最近使用情况</span>
+                <img src="../../img/icon05.png" alt="">
+            </div>
+            <div class="bottom">
+                <ul class="tabBox" id="syqk">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script>
+    let time = new Date().getHours();
+    let hello = document.getElementById('hello');
+    if (time >= 0 && time < 6) {
+        hello.innerHTML = '凌晨好！' + JSON.parse(localStorage.getItem('info')).username;
+    } else if (time >= 6 && time < 12) {
+        hello.innerHTML = '早上好！' + JSON.parse(localStorage.getItem('info')).username;
+    } else if (time >= 12 && time < 13) {
+        hello.innerHTML = '中午好！' + JSON.parse(localStorage.getItem('info')).username;
+    } else if (time >= 13 && time < 18) {
+        hello.innerHTML = '下午好！' + JSON.parse(localStorage.getItem('info')).username;
+    } else {
+        hello.innerHTML = "晚上好！" + JSON.parse(localStorage.getItem('info')).username;
+    }
+    let lastLoginTime = document.getElementById('lastLoginTime');
+
+
+    $.ajax({
+        url: baseUrl + '/manage/getAllManage',
+        type: 'post',
+        success(res) {
+            console.log(res.data);
+            res.data.forEach(e => {
+
+                if (e.username == JSON.parse(localStorage.getItem('info')).username) {
+                    lastLoginTime.innerHTML = '上次登录时间：' + e.last_time;
+                }
+                let output = ` <li>
+                        <img src="${e.avatar}" alt=""> <span>${e.username}</span>
+                        <p> 登录时间：${e.last_time}</p>
+                   </li> `;
+                $('#syqk').append(output);
+            })
+        },
+        error(err) {
+            console.log(err)
+        }
+    });
+
+
+</script>
+</body>
+</html>

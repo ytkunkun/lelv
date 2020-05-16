@@ -1,0 +1,17 @@
+define({
+  "name": "乐旅亲子API",
+  "version": "1.0.0",
+  "description": "乐旅亲子NodeJS版API",
+  "title": "乐旅亲子API",
+  "url": "http://127.0.0.1/",
+  "forceLanguage": "zh-cn",
+  "sampleUrl": false,
+  "defaultVersion": "0.0.0",
+  "apidoc": "0.3.0",
+  "generator": {
+    "name": "apidoc",
+    "time": "2020-05-08T15:50:51.515Z",
+    "url": "http://apidocjs.com",
+    "version": "0.18.0"
+  }
+});

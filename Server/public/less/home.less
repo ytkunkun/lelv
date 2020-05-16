@@ -1,0 +1,116 @@
+
+div#home {
+
+  .video-box {
+    position: fixed;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    width: 1200px;
+    z-index: 20;
+
+    i {
+      color: #fff;
+      font-size: 80px;
+      cursor: pointer;
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      z-index: 30;
+    }
+
+  }
+
+  button {
+    width: 100%;
+    height: 48px;
+    color: #fff;
+    border-radius: 24px;
+    font-size: 24px;
+    background: #B18AFF;
+    cursor: pointer;
+    margin: 20px 0;
+  }
+
+  .left {
+    color: #34495e;
+    font-size: 12px;
+    margin: 5px 0;
+    width: 550px;
+    text-align: center;
+    height: 100%;
+
+  }
+
+  .left div {
+    color: #34495e;
+
+    font-size: 1.5em;
+    margin: 5px 0;
+  }
+
+  .left div:nth-child(1) {
+    color: #34495e;
+    font-size: 5em;
+    margin-bottom: 50px;
+  }
+
+  .left div:nth-child(2) {
+    color: #000;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+  }
+
+  div.update {
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  div.updateInfo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    background-color: #fff;
+    border-radius: 4px;
+    overflow: auto;
+    padding-left: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border: 1px solid #ccc;
+
+    .updateInfo-close {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 55px;
+      cursor: pointer;
+      z-index: 50;
+    }
+
+    .timeline-h3 {
+      font-size: 23px;
+      line-height: 1.8;
+    }
+
+    .timeline-li {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .layui-timeline-title h2 {
+      font-size: 30px;
+    }
+  }
+
+  div.updateInfo::-webkit-scrollbar { /*滚动条整体样式*/
+    display: none;
+  }
+
+  div.updateInfo::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+    display: none;
+  }
+
+}

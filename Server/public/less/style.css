@@ -1,0 +1,970 @@
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 42.66666667px;
+  }
+}
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 48px;
+  }
+}
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 50px;
+  }
+}
+@media screen and (min-width: 384px) {
+  html {
+    font-size: 51.2px;
+  }
+}
+@media screen and (min-width: 400px) {
+  html {
+    font-size: 53.33333333px;
+  }
+}
+@media screen and (min-width: 414px) {
+  html {
+    font-size: 55.2px;
+  }
+}
+@media screen and (min-width: 424px) {
+  html {
+    font-size: 56.53333333px;
+  }
+}
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 64px;
+  }
+}
+@media screen and (min-width: 540px) {
+  html {
+    font-size: 72px;
+  }
+}
+@media screen and (min-width: 640px) {
+  html {
+    font-size: 85.33333333px;
+  }
+}
+@media screen and (min-width: 728px) {
+  html {
+    font-size: 97.06666667px;
+  }
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 100px;
+  }
+}
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 42.66666667px;
+  }
+}
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  resize: none;
+}
+body {
+  font-size: 0.16px;
+  font-family: SimHei, "Microsoft YaHei", sans-serif;
+}
+.login {
+  background: url("../img/bg01.png") no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+}
+.login > div.layui-container {
+  width: 14.26rem;
+  height: 6.3rem;
+  background: url("../img/bg02.png") no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.login > div.layui-container .left {
+  height: 100%;
+  position: absolute;
+  left: 2.24rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login > div.layui-container .left img {
+  width: 5.23rem;
+  height: 3.15rem;
+}
+.login .right {
+  width: 3.12rem;
+  position: absolute;
+  right: 2.58rem;
+}
+.login .right > header {
+  height: 2.56rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login .right > header img {
+  width: 1rem;
+  height: 1rem;
+}
+.login .right ul li,
+#ul_forget li {
+  width: 100%;
+  margin-top: 0.2rem;
+}
+.login .right ul li.username,
+#ul_forget li.username {
+  margin: 0;
+}
+.login .right ul li input[type="text"],
+#ul_forget li input[type="text"],
+.login .right ul li input[type="email"],
+#ul_forget li input[type="email"],
+.login .right ul li input[type="password"],
+#ul_forget li input[type="password"] {
+  height: 0.48rem;
+  width: 100%;
+  border-bottom: 1px solid #EFEFEF;
+  color: #999999;
+  font-size: 0.16rem;
+}
+.login .right ul li input[type="text"]::-webkit-input-placeholder,
+#ul_forget li input[type="text"]::-webkit-input-placeholder,
+.login .right ul li input[type="email"]::-webkit-input-placeholder,
+#ul_forget li input[type="email"]::-webkit-input-placeholder,
+.login .right ul li input[type="password"]::-webkit-input-placeholder,
+#ul_forget li input[type="password"]::-webkit-input-placeholder {
+  color: #999999;
+  font-size: 0.16rem;
+}
+.login .right ul li.mdl > div,
+#ul_forget li.mdl > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.login .right ul li.mdl > div > div:first-child input[type='checkbox'],
+#ul_forget li.mdl > div > div:first-child input[type='checkbox'] {
+  display: none;
+}
+.login .right ul li.mdl > div > div:first-child label[for='checkbox']::before,
+#ul_forget li.mdl > div > div:first-child label[for='checkbox']::before {
+  border: 1px solid #b18aff;
+  color: #fff;
+  width: 0.2rem;
+  height: 0.2rem;
+  text-align: center;
+  content: ' ';
+  border-radius: 50%;
+}
+.login .right ul li.mdl > div > div:first-child label,
+#ul_forget li.mdl > div > div:first-child label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.login .right ul li.mdl > div > div:first-child input[type='checkbox']:checked + label[for='checkbox']::before,
+#ul_forget li.mdl > div > div:first-child input[type='checkbox']:checked + label[for='checkbox']::before {
+  content: '✓';
+  font-size: 0.18rem;
+  color: #b18aff;
+  font-weight: bold;
+}
+.login .right ul li.mdl > div > div:first-child span,
+#ul_forget li.mdl > div > div:first-child span {
+  color: #999999;
+  font-size: 0.14rem;
+  margin-left: 0.1rem;
+}
+.login .right ul li.mdl > div > div:last-child span,
+#ul_forget li.mdl > div > div:last-child span {
+  color: #999999;
+  font-size: 0.14rem;
+  cursor: pointer;
+}
+.login .right ul li.codeLi,
+#ul_forget li.codeLi {
+  position: relative;
+}
+.login .right ul li.codeLi button,
+#ul_forget li.codeLi button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: #B18AFF;
+  color: #fff;
+  cursor: pointer;
+  height: 0.35rem;
+  width: 0.95rem;
+  border-radius: 0.24rem;
+}
+.login .right ul li.loginLi button,
+#ul_forget li.loginLi button {
+  width: 100%;
+  height: 0.48rem;
+  color: #fff;
+  border-radius: 24px;
+  font-size: 0.24rem;
+  background: #B18AFF;
+  cursor: pointer;
+  margin: 0.2rem 0;
+}
+.login .right ul li:last-child,
+#ul_forget li:last-child {
+  margin: 0;
+  text-align: right;
+}
+.login .right ul li:last-child span,
+#ul_forget li:last-child span {
+  color: #999999;
+  font-size: 0.14rem;
+  cursor: pointer;
+}
+.login .right ul#ul_forget {
+  display: none;
+}
+.login .right ul#ul_forget li.title {
+  font-size: 0.24rem;
+  text-align: center;
+  position: relative;
+  top: -0.3rem;
+}
+.login .right ul#ul_forget li.title .layui-icon-close {
+  font-size: 0.3rem;
+  color: #ccc;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.login .right ul#ul_reset {
+  display: none;
+}
+.login .right ul#ul_reset li.title {
+  font-size: 0.24rem;
+  text-align: center;
+  position: relative;
+  top: -0.3rem;
+}
+.login .right ul#ul_register {
+  display: none;
+}
+.login .right ul#ul_register li.title {
+  font-size: 0.24rem;
+  text-align: center;
+  position: relative;
+  top: -0.3rem;
+}
+.login .right ul#ul_register li.title .layui-icon-close {
+  font-size: 0.3rem;
+  color: #ccc;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.layui-layer-btn {
+  text-align: center !important;
+}
+.layui-layer {
+  min-width: 3.5rem !important;
+  min-height: 1rem !important;
+  opacity: 1;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+}
+.layui-layer-content {
+  text-align: center;
+}
+.layui-layer-loading2 {
+  margin: auto !important;
+}
+.manage {
+  height: 100vh;
+  padding: 0;
+  overflow: hidden;
+  background: #f5f4f7;
+}
+.manage header {
+  height: 1.1rem;
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  box-shadow: 0 3px 24px rgba(100, 100, 100, 0.48);
+  opacity: 1;
+}
+.manage header .logo {
+  height: 100%;
+  cursor: pointer;
+}
+.manage header .logo a {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.6rem;
+  justify-content: center;
+  height: 100%;
+}
+.manage header .logo a img {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+.manage header .logo a span {
+  color: #999999;
+  font-size: 0.16rem;
+  margin-top: 0.14rem;
+}
+.manage header .search {
+  padding-left: 1.13rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.manage header .search img {
+  width: 0.3rem;
+  height: 0.3rem;
+  cursor: pointer;
+}
+.manage header .search input[type="search"] {
+  width: 4.52rem;
+  height: 0.4rem;
+  color: #bbbbbb;
+  font-size: 0.16rem;
+  background: #f9f9f9;
+  box-shadow: 0 6px 8px rgba(232, 228, 228, 0.39);
+  border-radius: 32px;
+  padding-left: 0.26rem;
+  margin-left: 0.18rem;
+}
+.manage header .search input[type="search"]::-webkit-input-placeholder {
+  color: #bbbbbb;
+  font-size: 0.16rem;
+}
+.manage header .other {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.manage header .other img {
+  width: 0.3rem;
+  height: 0.3rem;
+  cursor: pointer;
+}
+.manage header .other img:last-child {
+  margin-left: 0.4rem;
+  margin-right: 0.77rem;
+}
+.manage main {
+  height: 100%;
+}
+.manage main .tab {
+  height: 100%;
+  margin: 0;
+  display: flex;
+}
+.manage main .tab .tab-title {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 3.95rem;
+  background: #b18aff;
+}
+.manage main .tab .tab-title .avatar {
+  height: 264px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.manage main .tab .tab-title .avatar img {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+}
+.manage main .tab .tab-title ul {
+  width: 100%;
+  height: 4rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.manage main .tab .tab-title ul li {
+  height: 0.8rem;
+  width: 100%;
+}
+.manage main .tab .tab-title ul li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.manage main .tab .tab-title ul li a {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  margin-left: 0.6rem;
+  font-size: 0.2rem;
+}
+.manage main .tab .tab-content {
+  flex: 1;
+  padding: 0;
+  overflow: auto;
+}
+.manage .notice-popup {
+  display: none;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+}
+.manage .notice-popup .main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9rem;
+  height: 6rem;
+  background: #ffffff;
+  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.16);
+  opacity: 1;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+.manage .notice-popup .main h5 {
+  font-size: 0.24rem;
+  font-weight: 400;
+}
+.manage .notice-popup .main .title,
+.manage .notice-popup .main .content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.24rem 0;
+}
+.manage .notice-popup .main .title label,
+.manage .notice-popup .main .content label {
+  font-size: 0.22rem;
+  margin-right: 0.2rem;
+  color: #333;
+  font-weight: 400;
+}
+.manage .notice-popup .main .title input,
+.manage .notice-popup .main .content input {
+  color: #333;
+  flex: 1;
+  height: 0.5rem;
+  border: 6px;
+  font-size: 0.18rem;
+  background: #f5f4f7;
+  padding: 0.1rem;
+}
+.manage .notice-popup .main .title textarea,
+.manage .notice-popup .main .content textarea {
+  color: #333;
+  flex: 1;
+  border: 6px;
+  font-size: 0.18rem;
+  background: #f5f4f7;
+  padding: 0.1rem;
+}
+.manage .notice-popup .main .content {
+  align-items: flex-start;
+}
+.manage .notice-popup .main button {
+  background: #B18AFF;
+  border-radius: 6px;
+  color: #fff;
+  height: 0.4rem;
+  width: 2.8rem;
+  cursor: pointer;
+  font-size: 0.18rem;
+  margin-bottom: 0.2rem;
+}
+.manage .notice-popup .h_title {
+  margin-top: 0.2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.18rem;
+  line-height: 1.5em;
+}
+.manage .notice-popup .h_title span {
+  overflow: hidden;
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.manage .notice-popup .history::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 5px;
+  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 5px;
+  display: none;
+}
+.manage .notice-popup .history {
+  width: 100%;
+  flex: 1;
+  overflow: auto;
+}
+.manage .notice-popup .history li {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.18rem;
+  line-height: 1.8em;
+}
+.manage .notice-popup .history li span {
+  overflow: hidden;
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.15rem;
+}
+.manage .notice-popup .history li img {
+  width: 0.3rem;
+  height: 0.3rem;
+}
+.tabBox::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 5px;
+  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 5px;
+}
+input.nv ~ .layui-form-onswitch {
+  background-color: #b18aff !important;
+  border-color: #b18aff !important;
+}
+input.nv ~ .layui-unselect {
+  background-color: #ed8fff;
+  border-color: #ed8fff;
+}
+input.nv ~ .layui-form-switch i {
+  background-color: #fff;
+}
+input.nv ~ .layui-form-switch em {
+  color: #fff !important;
+}
+.tabBox::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 6px 12px #f0f1f6;
+  background: #b18aff;
+}
+.tabBox::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  -webkit-box-shadow: inset 0 6px 12px rgba(181, 144, 255, 0.3);
+  border-radius: 0;
+  background: rgba(181, 144, 255, 0.3);
+}
+div.warp {
+  padding: 0.46rem;
+}
+div#home div.banner {
+  height: 3.87rem;
+  background: url("../img/bg04.png") no-repeat;
+  margin-top: -0.5rem;
+  background-size: 100% 100%;
+  position: relative;
+}
+div#home div.banner p:first-child {
+  font-size: 0.6rem;
+  color: #333333;
+  position: absolute;
+  top: 1.54rem;
+  left: 1.19rem;
+}
+div#home div.banner p:last-child {
+  font-size: 0.5rem;
+  color: #333333;
+  position: absolute;
+  top: 2.54rem;
+  left: 1.09rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+div#home div.banner p:last-child #lastLoginTime {
+  font-size: 0.25rem;
+}
+div#home div.cont {
+  display: flex;
+  justify-content: center;
+}
+div#home div.cont div.com {
+  margin-top: 0.77rem;
+  display: flex;
+  flex-direction: column;
+  width: 6.48rem;
+  height: 3.68rem;
+  background: #fff;
+  border-radius: 18px;
+  padding: 0 0.4rem;
+}
+div#home div.cont div.com div.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(177, 138, 255, 0.4);
+  min-height: 0.85rem;
+}
+div#home div.cont div.com div.title span {
+  color: #707070;
+  font-size: 24px;
+}
+div#home div.cont div.com div.title img {
+  width: 0.46rem;
+  height: 0.1rem;
+  cursor: pointer;
+}
+div#home div.cont div.left {
+  margin-right: 0.61rem;
+}
+div#home div.cont div.left .bottom {
+  display: flex;
+}
+div#home div.cont div.left .bottom div {
+  flex: 1;
+  width: 2.95rem;
+  height: 2.95rem;
+  background-size: 100% 100%;
+  position: relative;
+}
+div#home div.cont div.left .bottom div:first-child {
+  background: url("../img/ball01.png") no-repeat;
+}
+div#home div.cont div.left .bottom div:last-child {
+  background: url("../img/ball02.png") no-repeat;
+}
+div#home div.cont div.left .bottom div span {
+  color: #333333;
+  font-size: 0.26rem;
+  position: absolute;
+  top: 0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+div#home div.cont div.left .bottom div p {
+  color: #fff;
+  font-size: 0.26rem;
+  position: absolute;
+  top: 1.22rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+div#home div.cont div.right .bottom {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+div#home div.cont #syqk::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 6px 12px #f0f1f6;
+  background: #b18aff;
+  display: none;
+}
+div#home div.cont #syqk::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  display: none;
+}
+div#home div.cont div.right .bottom ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  overflow: auto;
+}
+div#home div.cont div.right .bottom ul li {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  padding: 0.1rem 0;
+  justify-content: space-between;
+  align-items: center;
+}
+div#home div.cont div.right .bottom ul li img {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+div#home div.cont div.right .bottom ul li span {
+  flex: 1;
+  color: #707070;
+  font-size: 0.18rem;
+  padding-left: 0.3rem;
+}
+div#home div.cont div.right .bottom ul li p {
+  color: #707070;
+  font-size: 0.18rem;
+}
+div.search div.header {
+  height: 1.3rem;
+  display: flex;
+  align-items: center;
+}
+div.search div.header label {
+  color: #666666;
+  font-size: 0.24rem;
+  margin-right: 0.2rem;
+}
+div.search div.header input {
+  height: 0.5rem;
+  width: 2.8rem;
+  border-radius: 6px;
+  margin-right: 0.9rem;
+  color: #666666;
+  font-size: 0.18rem;
+  padding-left: 0.15rem;
+}
+div.search div.header input::-webkit-input-placeholder {
+  color: #666666;
+  font-size: 0.18rem;
+}
+div.search div.header button {
+  width: 0.87rem;
+  height: 0.5rem;
+  background: #b18aff;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 6px;
+}
+a.layui-btn {
+  background: none;
+  width: 0.3rem;
+  height: 0.3rem;
+  padding: 0;
+}
+a.layui-btn img {
+  width: 100%;
+  height: 100%;
+}
+.layui-table-body::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 8px;
+  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 8px;
+}
+.layui-table-body::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 6px 12px #b590ff;
+  background: #b18aff;
+}
+.layui-table-body::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  -webkit-box-shadow: inset 0 6px 12px rgba(181, 144, 255, 0.3);
+  border-radius: 0;
+  background: rgba(181, 144, 255, 0.3);
+}
+span.layui-laypage-curr em.layui-laypage-em {
+  background: #b18aff !important;
+}
+.layui-form-onswitch {
+  background: #b18aff;
+  border-color: #b18aff;
+}
+.layui-table-tips-c:before {
+  position: absolute;
+  right: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.layui-table-cell {
+  height: 0.35rem;
+  line-height: 0.35rem;
+  text-align: center;
+}
+.layui-tab-title .layui-this:after {
+  content: none;
+}
+.layui-tab-item {
+  padding: 0 0.46rem;
+}
+.tab-home {
+  padding: 0;
+}
+.layui-table-tool {
+  background-color: #fff;
+}
+.layui-table-page {
+  height: 0.5rem;
+}
+.layui-form-checked[lay-skin=primary] i {
+  border-color: #b18aff !important;
+  background-color: #b18aff;
+  color: #fff;
+}
+.layui-table-box {
+  border: none;
+}
+div.layui-layer-page {
+  box-shadow: none;
+  background: none;
+}
+.layui-layer img {
+  width: 100%;
+  height: 100%;
+}
+.layui-table thead tr {
+  background: none;
+}
+.layui-table-view .layui-table th.layui-unselect .layui-table-cell span,
+.layui-table-cell span {
+  color: #333333;
+}
+div.layui-layer-btn a.layui-layer-btn0 {
+  border-color: #b18aff;
+  background-color: #b18aff;
+  color: #fff;
+}
+.layui-table tr {
+  height: 0.5rem;
+}
+.layui-table tbody tr:hover,
+.layui-table-hover {
+  background: #d2befb;
+  color: #fff;
+}
+.layui-table-header {
+  background: none;
+}
+.layui-tab-content {
+  position: relative;
+}
+.layui-border-box,
+.layui-table-view {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.layui-form {
+  border: none;
+}
+div#home .video-box {
+  position: fixed;
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+  width: 1200px;
+  z-index: 20;
+}
+div#home .video-box i {
+  color: #fff;
+  font-size: 80px;
+  cursor: pointer;
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  z-index: 30;
+}
+div#home button {
+  width: 100%;
+  height: 48px;
+  color: #fff;
+  border-radius: 24px;
+  font-size: 24px;
+  background: #B18AFF;
+  cursor: pointer;
+  margin: 20px 0;
+}
+div#home .left {
+  color: #34495e;
+  font-size: 12px;
+  margin: 5px 0;
+  width: 550px;
+  text-align: center;
+  height: 100%;
+}
+div#home .left div {
+  color: #34495e;
+  font-size: 1.5em;
+  margin: 5px 0;
+}
+div#home .left div:nth-child(1) {
+  color: #34495e;
+  font-size: 5em;
+  margin-bottom: 50px;
+}
+div#home .left div:nth-child(2) {
+  color: #000;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+}
+div#home div.update {
+  margin-top: 20px;
+  cursor: pointer;
+}
+div#home div.updateInfo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: auto;
+  padding-left: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border: 1px solid #ccc;
+}
+div#home div.updateInfo .updateInfo-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 55px;
+  cursor: pointer;
+  z-index: 50;
+}
+div#home div.updateInfo .timeline-h3 {
+  font-size: 23px;
+  line-height: 1.8;
+}
+div#home div.updateInfo .timeline-li {
+  font-size: 18px;
+  line-height: 1.5;
+}
+div#home div.updateInfo .layui-timeline-title h2 {
+  font-size: 30px;
+}
+div#home div.updateInfo::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  display: none;
+}
+div#home div.updateInfo::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  display: none;
+}
+/*# sourceMappingURL=style.css.map */

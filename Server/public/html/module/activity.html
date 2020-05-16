@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <link rel="stylesheet" href="../../plugin/layui/css/layui.css">
+<!--    <link rel="stylesheet" type="text/less" href="../../less/style.less">-->
+    <link rel="stylesheet" type="text/less" href="../../less/style.css">
+    <script src="../../plugin/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../../plugin/less-3.10.0.min.js"></script>
+    <script src="../../plugin/layui/layui.js"></script>
+</head>
+<body ondragstart="return false">
+<div  class="warp">
+    <div class="search">
+        <div class="header">
+            <label for="activityName">活动名称</label>
+            <input type="text" id="activityName">
+            <label for="activityTime">活动时间</label>
+            <input type="text" id="activityTime">
+        </div>
+    </div>
+
+    <div>
+        <table class="layui-hide" id="t_activity" lay-filter="test"></table>
+    </div>
+
+</div>
+
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script type="text/html" id="barDemo">
+
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><img src="../../img/delete.png" alt=""></a>
+</script>
+<script src="../../js/config.js"></script>
+<script src="../../plugin/date.format.js"></script>
+<script src="../../js/activity.js"></script>
+</body>
+</html>

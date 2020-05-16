@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../img/logo02.png" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="../plugin/layui/css/layui.css">
+    <!--    <link rel="stylesheet" type="text/less" href="../less/style.less">-->
+    <link rel="stylesheet" type="text/less" href="../less/style.css">
+    <script src="../plugin/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../plugin/less-3.10.0.min.js"></script>
+    <script src="../plugin/layui/layui.js"></script>
+    <script src="../plugin/md5.min.js"></script>
+    <title>乐旅管理系统——登录</title>
+</head>
+<body  oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onbeforecopy="return false"
+       oncopy=document.selection.empty() onselect=document.selection.empty()>
+<div class="layui-fluid login">
+
+    <div class="layui-container">
+
+        <div class="left">
+            <img src="../img/bg03.png" alt="">
+        </div>
+
+        <div class="right">
+            <header>
+                <img src="../img/logo.png" alt="">
+            </header>
+            <ul id="ul_login">
+                <li class="username"><input id="username" type="text" placeholder="邮箱"></li>
+                <li><input id="pwd" type="password" placeholder="密码"></li>
+                <li class="codeLi codeLoginLi">
+                    <input class="loginCode" type="text" placeholder="验证码">
+                    <button class="loginGetCode">获取验证码</button>
+                </li>
+                <li class="mdl">
+                    <div>
+                        <div>
+                            <input id="checkbox" type="checkbox" checked>
+                            <label for="checkbox"> <span>一个月免登陆</span></label>
+                        </div>
+                        <div class="forget">
+                            <span>忘记密码</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="loginLi">
+                    <div class="site-demo-button" style="margin-bottom: 0;">
+                        <button class="loginClick">登录</button>
+                    </div>
+                </li>
+                <li><span id="register">尚未注册？去注册</span></li>
+            </ul>
+            <ul id="ul_forget">
+                <li class="title">安全验证
+                    <i class="layui-icon layui-icon-close back"></i>
+                </li>
+                <li class="username"><input id="forget_username" type="text" placeholder="邮箱">
+                </li>
+                <li class="codeLi">
+                    <input id="forgetCode" class="code" type="text" placeholder="验证码">
+                    <button class="forgetGetCode">获取验证码</button>
+                </li>
+                <li class="loginLi">
+                    <div class="site-demo-button" style="margin-bottom: 0;">
+                        <button class="next">下一步</button>
+                    </div>
+                </li>
+            </ul>
+            <ul id="ul_reset">
+                <li class="title">新密码</li>
+                <li class="username">
+                    <input id="reset_pwd" type="password" placeholder="密码">
+                </li>
+                <li class="username">
+                    <input id="reset_pwd2" type="password" placeholder="再次输入密码">
+                </li>
+
+                <li class="loginLi">
+                    <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+                        <button class="submit">确认</button>
+                    </div>
+                </li>
+            </ul>
+            <ul id="ul_register">
+                <li class="title">注册
+                    <i class="layui-icon layui-icon-close back"></i>
+                </li>
+                <li class="username"><input id="register_username" type="text" placeholder="邮箱">
+                </li>
+                <li class="username"><input id="register_password" type="text" placeholder="密码">
+                </li>
+                <li class="codeLi">
+                    <input id="registerCode" class="code" type="text" placeholder="验证码">
+                    <button class="registerGetCode">获取验证码</button>
+                </li>
+                <li class="loginLi">
+                    <div class="site-demo-button" style="margin-bottom: 0;">
+                        <button class="registerClick">注册</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script src="../js/config.js"></script>
+<script>
+    let layer;
+    layui.use(['layer'], function () {
+        layer = layui.layer;
+
+    });
+
+    let isVerify = false;
+    let myCode;
+    let isRegister = false;
+    let t;
+    let time;
+    let loading ="";
+    let _username;
+    if (localStorage.getItem('username') && localStorage.getItem('username')) {
+        // 如果记住密码免登陆 无需验证码
+        $("#checkbox").attr("checked", "checked");
+        $('#username').val(localStorage.getItem('username'));
+        $('#pwd').val(localStorage.getItem('pwd'));
+        isVerify = true;
+        $('.codeLoginLi').hide();
+    } else {
+        $("#checkbox").removeAttr("checked");
+        isVerify = false;
+        $('.codeLoginLi').show();
+    }
+    let show = (el) => {
+        $('ul#ul_forget').hide();
+        $('ul#ul_login').hide();
+        $('ul#ul_reset').hide();
+        $('ul#ul_register').hide();
+
+        if (el === "forget") {
+            $('ul#ul_forget').show();
+        }
+        if (el === "login") {
+            $('ul#ul_login').show();
+        }
+        if (el === "reset") {
+            $('ul#ul_reset').show();
+        }
+        if (el === "register") {
+            $('ul#ul_register').show();
+        }
+    };
+    // 是否验证通过
+    let verify = (mail, code) => {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: baseUrl + "/verify/isVerify",
+                type: 'post',
+                data: {
+                    mail: mail,
+                    code: code
+                },
+                success(res) {
+                    console.log(res);
+                    if (res.data.isVerify) {
+
+                        resolve(res.data.isVerify)
+                    } else {
+                        resolve(res.data.isVerify)
+                    }
+                },
+                error(err) {
+                    // console.log(err);
+                }
+            });
+        });
+    };
+    // 发送邮箱验证码
+    let sendMail = (toMail) => {
+        return new Promise((resolve, reject) => {
+            loading=  layer.load(2, {
+                    shade: false,
+                    // time: 2*1000
+                });
+
+            if (t!=null){
+                layer.open({
+                    title: false,
+                    content: '请勿重复发送',
+                    closeBtn: 0
+                });
+                return
+            }
+
+            if (isRegister) {
+                $.ajax({
+                    url: baseUrl + '/verify/sendMailCode',
+                    type: 'post',
+                    data: {
+                        mail: toMail
+                    },
+                    success(res) {
+                        layer.close(loading);
+                        console.log(res);
+                        if (res.code === "error") {
+                            // alert("邮箱格式错误");
+
+                            layer.open({
+                                title: false,
+                                content: '邮箱格式错误',
+                                closeBtn: 0
+                            });
+                        } else if (res.code === "ok") {
+                            // myCode = res.data.mailCode;
+                            // alert(res.data.msg);
+                            layer.open({
+                                title: false,
+                                content: res.data.msg,
+                                closeBtn: 0
+                            });
+                            resolve({code: 'ok'});
+                        }
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: baseUrl + '/manage/getManage',
+                    type: 'post',
+                    data: {
+                        username: toMail
+                    },
+                    success(res) {
+                        layer.close(loading);
+                        if (res.data.code === 1) {
+                            $.ajax({
+                                url: baseUrl + '/verify/sendMailCode',
+                                type: 'post',
+                                data: {
+                                    mail: toMail
+                                },
+                                success(res) {
+                                    console.log(res);
+                                    if (res.code === "error") {
+                                        // alert("邮箱格式错误");
+
+                                        layer.open({
+                                            title: false,
+                                            content: '邮箱格式错误',
+                                            closeBtn: 0
+                                        });
+                                    } else if (res.code === "ok") {
+                                        // myCode = res.data.mailCode;
+                                        // alert(res.data.msg);
+                                        layer.open({
+                                            title: false,
+                                            content: res.data.msg,
+                                            closeBtn: 0
+                                        });
+                                        resolve({code: 'ok'});
+                                    }
+                                }
+                            });
+                        } else if (res.data.code === 0) {
+                            // alert('用户不存在');
+
+                            layer.open({
+                                title: false,
+                                content: '用户不存在',
+                                closeBtn: 0
+                            });
+
+
+                        }
+                    },
+                    error(err) {
+                        layer.close(loading);
+                        console.log(res);
+                    }
+                });
+            }
+        });
+    };
+    // 登录
+    let login = (username, password) => {
+        $.ajax({
+            url: baseUrl + '/manage/login',
+            type: 'post',
+            data: {
+                username: username,
+                pwd: password
+            },
+            success(res) {
+                if (res.code === 'ok') {
+                    // alert('登录成功');
+                    layer.open({
+                        title: false,
+                        content: '登录成功',
+                        closeBtn: 0
+                    });
+                    localStorage.setItem('info', JSON.stringify(res.data.info));
+                    window.location.href = "./manage.html";
+                } else {
+                    // alert('密码或用户名错误');
+                    layer.open({
+                        title: false,
+                        content: '密码或用户名错误',
+                        closeBtn: 0
+                    });
+                }
+            }
+        });
+    };
+    let register = (username, password) => {
+        $.ajax({
+            url: baseUrl + '/manage/register',
+            type: 'post',
+            data: {
+                username: username,
+                password: password
+            },
+            success(res) {
+                console.log(res);
+                if (res.data.msg === '用户已存在') {
+                    // alert('用户已存在');
+                    layer.open({
+                        title: false,
+                        content: '用户已存在',
+                        closeBtn: 0
+                    });
+                } else if (res.data.msg === "注册成功") {
+                    // alert('注册成功');
+                    layer.open({
+                        title: false,
+                        content: '注册成功',
+                        closeBtn: 0
+                    });
+                    show('login');
+                }
+            }
+        });
+    };
+    let event = () => {
+        $('button.loginGetCode').click(function () {
+            // 点击获取邮箱 调用接口 获取验证码 调用验证接口
+            let username = $('#username').val();
+            let send = sendMail(username);
+            send.then(resolve => {
+                if (resolve.code === "ok") {
+                    if (t == null) {
+                        t = 60;
+                        if (time != null) {
+                            clearInterval(time);
+                        }
+
+                        time = setInterval(function () {
+                            t--;
+                            $('button.loginGetCode').text(t + 's');
+
+                            if (t <= 0) {
+                                clearInterval(time);
+                                t = null;
+                                $('button.loginGetCode').text('获取验证码');
+                            }
+
+                        }, 1000);
+                    } else {
+                        layer.open({
+                            title: false,
+                            content: '请勿重复发送',
+                            closeBtn: 0
+                        });
+                        // alert('请勿重复发送');
+                    }
+                }
+
+            })
+
+
+        });
+        $('button.forgetGetCode').click(function () {
+            // 点击获取邮箱 调用接口 获取验证码 调用验证接口
+            let username = $('#forget_username').val();
+            let send = sendMail(username);
+            send.then(resolve => {
+
+                if (resolve.code === "ok") {
+                    if (t == null) {
+                        t = 60;
+                        if (time != null) {
+                            clearInterval(time);
+                        }
+                        time = setInterval(function () {
+                            t--;
+                            $('button.forgetGetCode').text(t + 's');
+
+                            if (t <= 0) {
+                                clearInterval(time);
+                                t = null;
+                                $('button.forgetGetCode').text('获取验证码');
+                            }
+
+                        }, 1000);
+                    } else {
+                        // alert('请勿重复发送');
+                        layer.open({
+                            title: false,
+                            content: '请勿重复发送',
+                            closeBtn: 0
+                        });
+                    }
+                }
+            })
+
+        });
+
+        $('.forget').click(function () {
+            show('forget');
+            t = null;
+            // if (time != null) {
+            //     clearInterval(time);
+            // }
+            // $('button.forgetGetCode').text('获取验证码');
+
+        });
+
+        $('ul#ul_forget .back').click(function () {
+            show('login');
+            t = null;
+            // if (time != null) {
+            //     clearInterval(time);
+            // }
+            // $('button.loginGetCode').text('获取验证码');
+        });
+
+        $('#register').click(function () {
+            show('register');
+            t = null;
+            isRegister = true;
+            // if (time != null) {
+            //     clearInterval(time);
+            // }
+            // $('button.registerGetCode').text('获取验证码');
+        });
+
+        $('#ul_register .back').click(function () {
+            show('login');
+            t = null;
+            // if (time != null) {
+            //     clearInterval(time);
+            // }
+            // $('button.loginGetCode').text('获取验证码');
+
+        });
+
+        $('ul#ul_forget .next').click(function () {
+            let username = $('#forget_username').val();
+            t = null;
+            _username = username;
+            let code = $('#forgetCode').val();
+            // 忘记密码验证
+            let _verify = verify(username, code);
+            _verify.then(resolve => {
+                console.log(resolve);
+                if (resolve) {
+                    show('reset');
+                } else {
+                    // alert('验证码错误！');
+                    layer.open({
+                        title: false,
+                        content: '验证码错误！',
+                        closeBtn: 0
+                    });
+                }
+            })
+        });
+        // 修改密码确认
+        $('ul#ul_reset .submit').click(function () {
+            clearInterval(time);
+            t = null;
+            // 判断正确两次密码一致性 修改密码接口
+            let pwd = $('#ul_reset input#reset_pwd').val();
+            let pwd2 = $('#ul_reset input#reset_pwd2').val();
+            if (pwd == pwd2) {
+                $.ajax({
+                    url: baseUrl + '/manage/setPassword',
+                    type: 'post',
+                    data: {
+                        username: _username,
+                        pwd: md5(pwd)
+                    },
+                    success(res) {
+                        console.log(res);
+                        if (res.data == "修改成功") {
+                            // alert('修改成功');
+                            layer.open({
+                                title: false,
+                                content: '修改成功！',
+                                closeBtn: 0
+                            });
+                            show('login');
+                        }
+                    },
+                    error(err) {
+                        console.log(err);
+                    }
+                });
+            } else {
+                // alert('密码不一致');
+                layer.open({
+                    title: false,
+                    content: '密码不一致！',
+                    closeBtn: 0
+                });
+            }
+
+
+        });
+
+        // 登录点击事件
+        $('.loginClick').click(function () {
+
+            let username = document.getElementById('username').value;
+            let pwd = document.getElementById('pwd').value;
+            pwd = md5(pwd);
+            if ($('#checkbox').is(':checked')) {
+                localStorage.setItem('username', username);
+                localStorage.setItem('pwd', pwd);
+            } else {
+                localStorage.removeItem('username');
+                localStorage.removeItem('pwd');
+            }
+            if (isVerify) {
+                window.location.href = "./manage.html";
+            } else {
+                let _verify = verify(username, $('.loginCode').val());
+
+                _verify.then(resolve => {
+
+                    if (resolve) {
+
+                        login(username, pwd);
+                    } else {
+                        // alert('验证码错误！');
+                        layer.open({
+                            title: false,
+                            content: '验证码错误！',
+                            closeBtn: 0
+                        });
+                    }
+                });
+            }
+
+        });
+
+
+        $('.registerGetCode').click(function () {
+            let username = $('#register_username').val();
+            let send = sendMail(username);
+            send.then(reslove => {
+                if (reslove.code === "ok") {
+                    if (t == null) {
+                        t = 60;
+                        if (time != null) {
+                            clearInterval(time);
+                        }
+                        time = setInterval(function () {
+                            t--;
+                            $('button.registerGetCode').text(t + 's');
+
+                            if (t <= 0) {
+                                clearInterval(time);
+                                t = null;
+                                $('button.registerGetCode').text('获取验证码');
+                            }
+
+                        }, 1000);
+                    } else {
+                        // alert('请勿重复发送');
+                        layer.open({
+                            title: false,
+                            content: '请勿重复发送！',
+                            closeBtn: 0
+                        });
+                    }
+                }
+            })
+
+        });
+        // 注册按钮
+        $('.registerClick').click(function () {
+            let username = $('#register_username').val();
+            let password = $('#register_password').val();
+            password = md5(password);
+            let code = $('#registerCode').val();
+            let _verify = verify(username, code);
+            _verify.then(resolve => {
+                if (resolve) {
+                    register(username, password);
+                    clearInterval(time);
+                    t = null;
+                    isRegister = false;
+                } else {
+                    // alert('验证码错误！');
+                    layer.open({
+                        title: false,
+                        content: '验证码错误！',
+                        closeBtn: 0
+                    });
+                }
+            });
+        });
+    };
+
+    event();
+
+
+</script>
+</body>
+</html>

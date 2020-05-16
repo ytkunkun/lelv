@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../plugin/layui/css/layui.css">
+    <!-- <link rel="stylesheet" type="text/less" href="../less/style.less">-->
+    <link rel="stylesheet" type="text/less" href="../less/style.css">
+    <link href="../img/logo02.png" rel="icon" type="image/x-icon">
+    <script src="../plugin/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../plugin/layui/layui.js"></script>
+    <script src="../plugin/less-3.10.0.min.js"></script>
+    <title>乐旅管理系统</title>
+</head>
+<body  oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onbeforecopy="return false"
+       oncopy=document.selection.empty() onselect=document.selection.empty()>
+<div class="manage layui-fluid" id="app">
+    <header class="layui-fluid">
+        <div class="layui-col-md2 logo">
+            <a class="href" href="module/hello.html">
+                <img src="../img/logo02.png" alt="">
+
+                <span>乐旅管理系统</span>
+            </a>
+        </div>
+        <div class="layui-col-md8 search">
+            <!--                        <img src="../img/icon02.png" alt="">-->
+            <!--                        <input type="search" placeholder="Type in to search...">-->
+        </div>
+        <div class="layui-col-md2 other">
+            <img class="notice" src="../img/icon03.png" alt="">
+            <img class="outlogin" src="../img/icon04.png" alt="">
+        </div>
+    </header>
+    <main>
+        <div class="tab">
+            <div class="tab-title">
+                <div class="avatar">
+                    <img src="../img/head.png" alt="">
+                </div>
+                <ul class="tabBox">
+                    <li><a class="href" href="module/hello.html">首页</a></li>
+                    <li><a class="href" href="module/user.html">用户管理</a></li>
+                    <li><a class="href" href="module/business.html">商家管理</a></li>
+                    <li><a class="href" href="module/shop.html">店铺管理</a></li>
+                    <li><a class="href" href="module/activity.html">活动管理</a></li>
+                    <li><a class="href" href="module/article.html">文章管理</a></li>
+                    <li><a class="href" href="module/order.html">订单管理</a></li>
+                </ul>
+            </div>
+            <div class="tab-content" style="overflow: hidden;">
+                <iframe id="iframeMain" src="module/hello.html" style="width: 100%;height: 100%;"></iframe>
+            </div>
+        </div>
+    </main>
+    <div class="notice-popup">
+        <div class="main">
+            <h5>发送通知</h5>
+            <div class="title">
+                <label for="title">标题</label>
+                <input id="title" type="text" placeholder="请输入标题">
+            </div>
+            <div class="content">
+                <label for="cont">内容</label>
+                <textarea id="cont" type="text" placeholder="请输入内容" cols="30" rows="3"></textarea>
+                <!--                <input id="title" type="text" placeholder="请输入标题">-->
+            </div>
+            <button id="send">发送</button>
+            <h5>历史消息</h5>
+
+            <div class="h_title"><span>ID</span>
+                <span>头像</span>
+                <span>用户名</span>
+                <span>标题</span>
+                <span>内容</span>
+                <span>时间</span>
+                <span>操作</span>
+            </div>
+            <ul class="history">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<script>
+    let baseURl = 'http://127.0.0.1'
+
+    function delNotice(e) {
+
+        $.ajax({
+            url: baseURl+'/notice/deleteNotice',
+            type: "post",
+            data: {notice_id: e},
+            success(res) {
+                layer.open({
+                    title: false,
+                    content: '删除成功',
+                    closeBtn: 0
+                });
+                geiNotice();
+            },
+            error(err) {
+                console.log(err);
+            }
+        });
+    }
+
+    function geiNotice() {
+        $.ajax({
+            url: baseURl+'/notice/getAllNotice',
+            type: "post",
+            data: {},
+            success(res) {
+                $('.history').empty();
+                console.log(res.data);
+                res.data.forEach(e => {
+                    $('.history').append(`
+                                  <li class="t">
+                                            <span>${e.notice_id}</span>
+                                            <span><img src="${e.sender_avatar}" alt=""></span>
+                                                <span>${e.sender_username}</span>
+                                            <span>${e.title}</span>
+                                            <span>${e.content}</span>
+                                            <span>${e.sender_time}</span>
+                                            <span onclick="delNotice(${e.notice_id})">删除</span>
+                                   </li>`);
+                });
+            },
+            error(err) {
+                console.log(err);
+            }
+        });
+    }
+
+    ~function () {
+        let layer;
+        layui.use(['layer'], function () {
+            layer = layui.layer;
+
+        });
+
+        if (!JSON.parse(localStorage.getItem('info'))) {
+            alert('尚未登录');
+            window.location.href = './login.html';
+        }
+
+        $('.avatar img').attr('src', JSON.parse(localStorage.getItem('info')).avatar);
+        $('.outlogin').click(function () {
+
+            window.location.href = 'home.html';
+        });
+        $(document).ready(function () {
+            $('.href').click(function (e) {
+                e.preventDefault();
+                $('#iframeMain').attr('src', $(this).attr('href'));
+            });
+        });
+        // 通知显示
+        $('.notice').click(function () {
+            $('.notice-popup').show();
+        });
+        $('.notice-popup').click(function (e) {
+            $(this).hide();
+            e.stopPropagation();
+        });
+        // 通知隐藏
+        $('.notice-popup .main').click(function (e) {
+            e.stopPropagation();
+        });
+
+
+        geiNotice();
+
+
+        // 点击发送
+        $('#send').click(function () {
+            let t = $('#title').val();
+            let c = $('#cont').val();
+            if (t.trim() == "" || c.trim() == "") {
+                layer.open({
+                    title: false,
+                    content: '不能为空',
+                    closeBtn: 0
+                });
+            } else {
+                $.ajax({
+                    url: baseURl+'/notice/sendNotice',
+                    type: "post",
+                    data: {
+                        sender_id: JSON.parse(localStorage.getItem('info')).manage_id,
+                        title: t,
+                        content: c
+                    },
+                    success(res) {
+                        console.log(res);
+                        layer.open({
+                            title: false,
+                            content: '发送成功',
+                            closeBtn: 0
+                        });
+                        geiNotice();
+                    },
+                    error(err) {
+                        console.log(err);
+                    }
+                });
+            }
+
+        });
+
+
+    }();
+</script>
+
+</body>
+
+</html>

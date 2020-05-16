@@ -1,0 +1,67 @@
+//变量
+//html根节点的字体大小计算方式=基础字体/设计稿尺寸*设备宽度
+//假设设计稿640
+//640像素的手机网站根节点文字大小
+//100/640*640 =100
+// 320像素的手机网站根节点文字大小
+//100/640*320 =50
+// 480像素的手机网站根节点文字大小
+//100/640*480 =75
+//@mainColor:#ff9999;
+//@auxColor:#ffcdcd;
+@auxColor: #ffa11b;
+@mainColor: #ffb74e;
+@baseFont: 100px; //定义根节点大小
+@psdWidth: 750px; //设计稿大小
+@deviceWidth: 320px, 360px, 375px, 384px, 400px,
+414px, 424px, 480px, 540px, 640px, 728px, 750px; //常见设备大小
+@len: length(@deviceWidth); //devicewidth数组长度
+@px: 1rem/@baseFont; //单位转化
+
+
+//@index假设从1开始
+//提取数组extract(@deviceWidth,@index)
+//循环 自己调用自己
+
+//适配方式
+.calc(@index) when (@index <= @len) {
+  @media screen and (min-width: extract(@deviceWidth, @index)) {
+    html {
+      font-size: @baseFont / @psdWidth * extract(@deviceWidth, @index);
+    }
+  }
+  .calc(@index + 1);
+
+}
+
+.calc(@index) when (@index =1) {
+  @media screen and (max-width: extract(@deviceWidth, @index)) {
+    html {
+      font-size: @baseFont / @psdWidth * extract(@deviceWidth, @index);
+    }
+  }
+
+}
+
+
+.calc(1); //调用适配的函数
+
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  resize: none;
+}
+
+body {
+  font-size: 16/@baseFont;
+  font-family: SimHei, "Microsoft YaHei", sans-serif;
+}
+
+
