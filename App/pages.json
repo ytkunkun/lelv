@@ -1,0 +1,318 @@
+{
+	"pages": [{
+			"path": "pages/other/identity/identity",
+			"style": {
+				"app-plus": {
+					"titleNView": false,
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/other/login/login",
+			"style": {
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/other/register/register",
+			"style": {
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/other/edit/edit",
+			"style": {
+				"scrollIndicator": "none"
+			}
+		}, {
+			"path": "pages/other/chat/chat",
+			"style": {
+				"scrollIndicator": "none"
+			}
+		}, {
+			"path": "pages/other/home/home",
+			"style": {
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/other/community/community",
+			"style": {
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/other/me/me",
+			"style": {
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/other/news/news",
+			"style": {
+				"navigationBarTitleText": "消息",
+				"scrollIndicator": "none"
+			}
+		}
+    ],
+	"subPackages": [{
+		"root": "parenting",
+		"pages": [{
+				"path": "activity/activity",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "details/details",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "means/means",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "plus/plus",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "currency/currency",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "applicationOrder/applicationOrder",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "sending/sending",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "myCommunity/myCommunity",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "communityDetails/communityDetails",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "myForwarding/myForwarding",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "choiceJurisdiction/choiceJurisdiction",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "successfulPayment/successfulPayment",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			}
+		]
+	}, {
+		"root": "business",
+		"pages": [{
+				"path": "examination/examination",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "cooperation/cooperation",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "success/success",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "home/home",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "refund/refund",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "query/query",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "manage/manage",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "activityManager/activityManager",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "storeManager/storeManager",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "personnelManager/personnelManager",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "addPersonnel/addPersonnel",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "evaluateManager/evaluateManager",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "myMoney/myMoney",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "personalCenter/personalCenter",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "leaveUnused/leaveUnused",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "employeeList/employeeList",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "activiting/activiting",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "setUp/setUp",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "issueMaterials/issueMaterials",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			},
+			{
+				"path": "news/news",
+				"style": {
+					"scrollIndicator": "none"
+				}
+			}
+		]
+	}],
+
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "乐旅亲子",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "custom" //隐藏原生的导航栏
+		// "app-plus": {
+		// 	"titleNView": false
+		// }
+		// "navigationStyle": {
+		// 			"navigationStyle": "custom",
+		// 			"app-plus": {
+		// 				"titleView": false
+		// 			}
+		// 		}
+	},
+	"tabBar": {
+		"color": "#bfbfbf",
+		"selectedColor": "#515151",
+		"borderStyle": "black",
+		"backgroundColor": "#FFFFFF",
+		"list": [{
+				"pagePath": "pages/other/home/home",
+				"text": "首页",
+				"iconPath": "static/images/aaaa2.png",
+				"selectedIconPath": "static/images/aa1.png",
+				"color": "#dedede"
+			},
+			{
+				"pagePath": "pages/other/community/community",
+				"text": "社区",
+				"iconPath": "static/images/aa4.png",
+				"selectedIconPath": "static/images/aa3.png",
+				"color": "#dedede"
+			},
+			{
+				"pagePath": "pages/other/news/news",
+				"text": "消息",
+				"iconPath": "static/images/aa6.png",
+				"selectedIconPath": "static/images/aa5.png",
+				"color": "#dedede"
+			},
+			{
+				"pagePath": "pages/other/me/me",
+				"text": "我的",
+				"iconPath": "static/images/aa8.png",
+				"selectedIconPath": "static/images/aa7.png",
+				"color": "#dedede"
+			}
+		]
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+			"name": "", //模式名称
+			"path": "", //启动页面，必选
+			"query": "" //启动参数，在页面的onLoad函数里面得到
+		}]
+	}
+}
